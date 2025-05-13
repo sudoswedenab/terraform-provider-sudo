@@ -1,9 +1,11 @@
 module bitbucket.org/sudosweden/terraform-provider-sudo
 
-go 1.22.2
+go 1.24
+
+toolchain go1.24.3
 
 require (
-	github.com/go-jose/go-jose/v4 v4.0.1
+	github.com/go-jose/go-jose/v4 v4.1.0
 	github.com/hashicorp/terraform-plugin-framework v1.14.1
 )
 
@@ -24,7 +26,6 @@ require (
 	github.com/oklog/run v1.0.0 // indirect
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
-	golang.org/x/crypto v0.32.0 // indirect
 	golang.org/x/net v0.34.0 // indirect
 	golang.org/x/sys v0.29.0 // indirect
 	golang.org/x/text v0.21.0 // indirect
