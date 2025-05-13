@@ -1,0 +1,58 @@
+# Copyright 2025 Sudo Sweden AB
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+version: 2
+archives:
+- formats:
+  - zip
+  name_template: '{{.ProjectName}}_{{.Version}}_{{.Os}}_{{.Arch}}'
+builds:
+- binary: '{{.ProjectName}}_v{{.Version}}'
+  env:
+  - CGO_ENABLED=0
+  flags:
+  - -trimpath
+  goarch:
+  - amd64
+  - arm
+  - arm64
+  goos:
+  - darwin
+  - freebsd
+  - linux
+  - windows
+  ldflags:
+  - '-s -w -X main.version={{.Version}}'
+changelog:
+  disable: true
+checksum:
+  algorithm: sha256
+  extra_files:
+  - glob: 'terraform-registry-manifest.json'
+    name_template: '{{.ProjectName}}_{{.Version}}_manifest.json'
+  name_template: '{{.ProjectName}}_{{.Version}}_SHA256SUMS'
+release:
+  extra_files:
+  - glob: 'terraform-registry-manifest.json'
+    name_template: '{{.ProjectName}}_{{.Version}}_manifest.json'
+signs:
+- args:
+  - '--batch'
+  - '--local-user'
+  - '{{.Env.GPG_FINGERPRINT}}'
+  - '--output'
+  - '${signature}'
+  - '--detach-sign'
+  - '${artifact}'
+  artifacts: checksum
