@@ -5,13 +5,13 @@ import (
 	"fmt"
 	"os"
 
-	"bitbucket.org/sudosweden/terraform-provider-sudo/internal/provider"
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
+	"github.com/sudoswedenab/terraform-provider-sudo/internal/provider"
 )
 
 func main() {
 	opts := providerserver.ServeOpts{
-		Address: "registry.terraform.io/sudosweden/sudo",
+		Address: "registry.terraform.io/sudoswedenab/sudo",
 		Debug:   false,
 	}
 

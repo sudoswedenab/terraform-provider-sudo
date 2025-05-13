@@ -1,4 +1,4 @@
-module bitbucket.org/sudosweden/terraform-provider-sudo
+module github.com/sudoswedenab/terraform-provider-sudo
 
 go 1.24
 
