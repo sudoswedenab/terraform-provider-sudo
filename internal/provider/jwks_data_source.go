@@ -104,11 +104,13 @@ func (s *JWKSDataSource) Schema(ctx context.Context, req datasource.SchemaReques
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			"rsa_private_key_pem": schema.StringAttribute{
-				Required:  true,
-				Sensitive: true,
+				Description: "RSA private key, in PEM encoding, to extract the information from.",
+				Required:    true,
+				Sensitive:   true,
 			},
 			"json": schema.StringAttribute{
-				Computed: true,
+				Description: "JSON Web Key Set (JWKS) containing the public key information for the supplied private key.",
+				Computed:    true,
 			},
 		},
 	}

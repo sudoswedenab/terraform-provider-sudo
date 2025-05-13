@@ -14,4 +14,5 @@
 
 package main
 
-//go:generate go tool addlicense -c "Sudo Sweden AB" -y 2025 -l apache .
+//go:generate go tool addlicense -c "Sudo Sweden AB" -y 2025 -l apache -ignore "**/*.md" -ignore "**/*.tf" .
+//go:generate go tool tfplugindocs generate --provider-name sudo
